@@ -3,37 +3,27 @@
 namespace MyOgreProgram.Classes
 {
     public class MyOgreApp : org.ogre.ApplicationContext
-    {
-        //org.ogre.ApplicationContext ctx;
+    {       
         Root root;
         SceneManager scnMgr;
         ShaderGenerator shadergen;
         Viewport viewport;
         MyOgreInputListener listener;
-        //   RenderWindow window;
-
-        // IntPtr myIntPtr;
+             
         int myWidth;
         int myHeight;
 
-        public MyOgreApp() : base("OgreTutorialApp")
+        public MyOgreApp() : base("MyOgreProgram")
         {
-            listener = new MyOgreInputListener();
-            //ctx = new org.ogre.ApplicationContext("OgreTutorialApp");
+            listener = new MyOgreInputListener();           
         }
 
-
-
         public void Init()
-        {
-            //myIntPtr = null;
+        {          
             myWidth = 800;
             myHeight = 600;
             base.initApp();
-
-            //base.destroyWindow("OgreTutorialApp");
-
-            // get a pointer to the already created root
+        
             root = getRoot();
             scnMgr = root.createSceneManager();
 
