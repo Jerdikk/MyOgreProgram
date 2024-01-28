@@ -9,19 +9,21 @@ namespace MyOgreProgram.Classes
         ShaderGenerator shadergen;
         Viewport viewport;
         MyOgreInputListener listener;
-             
-        int myWidth;
-        int myHeight;
+        
+
+      //  int myWidth;
+      //  int myHeight;
 
         public MyOgreApp() : base("MyOgreProgram")
         {
-            listener = new MyOgreInputListener();           
+            listener = new MyOgreInputListener();
+            
         }
 
         public void Init()
         {          
-            myWidth = 800;
-            myHeight = 600;
+         //   myWidth = 800;
+          //  myHeight = 600;
             base.initApp();
         
             root = getRoot();
@@ -64,6 +66,9 @@ namespace MyOgreProgram.Classes
             cam.setNearClipDistance(5); // specific to this sample
             cam.setAutoAspectRatio(true);
             camNode.attachObject(cam);
+            camNode.setFixedYawAxis(true);
+            listener.camMan = new CameraMan(camNode);
+            listener.camMan.setStyle(CameraStyle.CS_FREELOOK);
 
             viewport = getRenderWindow().addViewport(cam);
             viewport.setBackgroundColour(ColourValue.Black);
@@ -106,7 +111,12 @@ namespace MyOgreProgram.Classes
             addInputListener(listener);
         }
 
-
+        public override bool frameRenderingQueued(FrameEvent evt)
+        {
+            //return base.frameRenderingQueued(evt);
+            listener.camMan.frameRendered(evt);
+            return true;
+        }
 
         public bool Update()
         {
