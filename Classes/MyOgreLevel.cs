@@ -2,13 +2,13 @@
 {
     public class MyOgreLevel
     {
-       static int MAP_WIDTH = 20;        // Map Width
-       static int MAP_HEIGHT = 20;   // Map Height
+       static int LEVEL_WIDTH = 20;        // Map Width
+       static int LEVEL_HEIGHT = 20;   // Map Height
 
-        int[] mMap = new int[MAP_WIDTH * MAP_HEIGHT];	// Our map data array
+        int[] level = new int[LEVEL_WIDTH * LEVEL_HEIGHT];	// Our map data array
         public MyOgreLevel() 
         {
-            int[] tempMap = new int[]
+            int[] tempLevel = new int[]
             {
 		// 0001020304050607080910111213141516171819
 		1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,   // 00
@@ -34,34 +34,34 @@
 	};
 
             // assign our world to our member array
-            for (int i = 0; i < MAP_WIDTH * MAP_HEIGHT; i++)
+            for (int i = 0; i < LEVEL_WIDTH * LEVEL_HEIGHT; i++)
             {
-                mMap[i] = tempMap[i];
+                level[i] = tempLevel[i];
             }
         }
         // Return the width of the map
         public int GetWidth()            
         {
-            return MAP_WIDTH;
+            return LEVEL_WIDTH;
         }
         // Return the height of the map
         public int GetHeight()
         {
-            return MAP_HEIGHT;
+            return LEVEL_HEIGHT;
         }
         // Return a tile at the specified coordinates
         public int GetTile(int x, int y)
         {
-            if (x >= MAP_WIDTH)
-                x = MAP_WIDTH - 1;
+            if (x >= LEVEL_WIDTH)
+                x = LEVEL_WIDTH - 1;
             if (x < 0)
                 x = 0;
-            if (y >= MAP_HEIGHT)
-                y = MAP_HEIGHT - 1;
+            if (y >= LEVEL_HEIGHT)
+                y = LEVEL_HEIGHT - 1;
             if (y < 0)
                 y = 0;
 
-            return mMap[(y * MAP_WIDTH) + x];
+            return level[(y * LEVEL_WIDTH) + x];
         }
     }
 }

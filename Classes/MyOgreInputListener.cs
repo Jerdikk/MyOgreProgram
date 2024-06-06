@@ -6,6 +6,7 @@ namespace MyOgreProgram.Classes
     {
         public bool isQuitFlag;
         public CameraMan camMan;
+        private bool leftButtonPressed;
 
         public MyOgreInputListener()
         {
@@ -65,18 +66,33 @@ namespace MyOgreProgram.Classes
         public override bool mouseMoved(MouseMotionEvent evt)
         {
             // return base.mouseMoved(evt);
-            camMan.mouseMoved(evt);
+            if (leftButtonPressed)
+            {
+                camMan.mouseMoved(evt);
+            }
             return true;
         }
 
         public override bool mousePressed(MouseButtonEvent evt)
         {
-            return base.mousePressed(evt);
+            base.mousePressed(evt);
+            if (evt.button==1) 
+            {
+                leftButtonPressed = true;
+            }
+
+            return true;
         }
 
         public override bool mouseReleased(MouseButtonEvent evt)
         {
-            return base.mouseReleased(evt);
+            base.mouseReleased(evt);
+            if (evt.button == 1)
+            {
+                leftButtonPressed = false;
+            }
+
+            return true;
         }
 
         public override bool mouseWheelRolled(MouseWheelEvent evt)
